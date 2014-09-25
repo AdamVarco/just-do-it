@@ -1,5 +1,16 @@
 require 'sinatra'
-
+require 'slim'
+ 
 get '/' do
-  "Just Do It"
+  slim :index
+end
+
+get '/:task' do
+  @task = params[:task].split('-').join(' ').capitalize
+  slim :task
+end
+
+post '/' do
+  @task =  params[:task]
+  slim :task
 end
